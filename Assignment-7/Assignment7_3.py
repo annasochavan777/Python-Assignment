@@ -18,19 +18,52 @@ class Numbers:
 		self.Value = no
 	
 	def ChkPrime(self):
-		pass
+		counter = 0
+		for i in range(2,self.Value,1): # range(start, stop, step)
+			if self.Value % i == 0:
+				counter += 1
+			if counter > 0:
+				break
+		return counter == 0
 		
 	def ChkPerfect(self):
-		pass
+		sum = 0
+		for i in range(1,self.Value):
+			if self.Value % i == 0:
+				sum += i
+		return sum == self.Value	
 		
 	def Factors(self):
-		pass
+		print("factors of {} is ".format(self.Value))
+		for i in range(1,self.Value):
+			if self.Value % i == 0:
+				print(i,end = " ")
 		
 	def SumFactors(self):
-		pass
+		sum = 0
+		for i in range(1,self.Value):
+			if self.Value % i == 0:
+				sum += i
+		return sum
 		
 def main():
 	no = int(input("please enter no :"))
+	obj1 = Numbers(no)
 	
+	isPrime = obj1.ChkPrime()
+	if isPrime:
+		print("{} is prime number ".format(no))
+	else:
+		print("{} is not prime number ".format(no))
+	
+	isPerfect = obj1.ChkPerfect()
+	if isPerfect:
+		print("{} is Perfect number ".format(no))
+	else:
+		print("{} is not Perfect number ".format(no))
+	
+	obj1.Factors()
+	
+	print("\nsum of factor is ",obj1.SumFactors())
 if __name__ == "__main__":
 	main()
